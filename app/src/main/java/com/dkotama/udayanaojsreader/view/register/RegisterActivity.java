@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.dkotama.udayanaojsreader.R;
+import com.dkotama.udayanaojsreader.view.common.CommonActivity;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends CommonActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,5 +16,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         setTitle("Register");
+
+
     }
 }

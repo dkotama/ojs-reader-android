@@ -23,33 +23,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:paddingLeft="@dimen/medium_padding"
-            android:paddingRight="@dimen/medium_padding"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:orientation="vertical"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <EditText
-                android:inputType="text"
-                android:maxLines="1"
-                android:id="@+id/username"
-                android:hint="Username"
+            <LinearLayout
+                android:paddingLeft="@dimen/medium_padding"
+                android:paddingRight="@dimen/medium_padding"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:layout_marginTop="@dimen/normal_margin"
-                android:id="@+id/password"
-                android:hint="Password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <EditText
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:id="@+id/username"
+                    android:hint="Username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
+                <EditText
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/normal_margin"
+                    android:id="@+id/password"
+                    android:hint="Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-        </LinearLayout>
+            </LinearLayout>
+
+            <ProgressBar
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                android:id="@+id/progressbar"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+        </RelativeLayout>
 
         <LinearLayout
             android:orientation="horizontal"
