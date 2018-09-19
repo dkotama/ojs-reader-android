@@ -1,7 +1,7 @@
 package com.dkotama.udayanaojsreader.view.login;
 
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,7 +46,9 @@ public class LoginActivity extends CommonActivity implements LoginContract.View 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pushLogin();
+                disableInput();
+                presenter.doLogin(username.getText().toString(),
+                        password.getText().toString());
             }
         });
     }
@@ -54,24 +56,19 @@ public class LoginActivity extends CommonActivity implements LoginContract.View 
     @Override
     public void onLoginSuccess() {
         enableInput();
-        Log.d("LOGIN SUCCESS", "onLoginSuccess: LOGIN SUCCESS");
-//        Intent intent = new Intent(getBaseContext(), RegisterActivity.class);
-//        startActivity(intent);
+
+        // temporary demo for login success
+        android.support.v7.app.AlertDialog.Builder builder = makeDialogBuilder("Selamat Datang", "Login Sukses", null);
+        builder.create().show();
     }
 
     @Override
     public void onLoginFailed(String message) {
         enableInput();
-        makeError(message).show();
+        makeError(message, "error").show();
     }
 
     // Private Function
-    private void pushLogin() {
-        disableInput();
-        presenter.doLogin(username.getText().toString(),
-                password.getText().toString());
-    }
-
     private void gotoRegister() {
         Intent intent = new Intent(getBaseContext(), RegisterActivity.class);
         startActivity(intent);

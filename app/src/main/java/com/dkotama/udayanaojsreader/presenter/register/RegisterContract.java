@@ -2,7 +2,8 @@ package com.dkotama.udayanaojsreader.presenter.register;
 
 import com.dkotama.udayanaojsreader.common.Constant;
 import com.dkotama.udayanaojsreader.data.model.login.LoginData;
-import com.dkotama.udayanaojsreader.data.model.login.LoginModel;
+import com.dkotama.udayanaojsreader.data.model.register.RegisterData;
+import com.dkotama.udayanaojsreader.data.model.register.RegisterModel;
 
 import io.reactivex.Single;
 import retrofit2.http.Field;
@@ -16,20 +17,20 @@ import retrofit2.http.POST;
 
 public interface RegisterContract {
     interface View {
-        void onLoginSuccess();
-        void onLoginFailed(String message);
+        void onRegisterSuccess();
+        void onRegisterFailed(String message);
     }
 
     interface Presenter{
-        void doLogin(String username, String password);
-        void loginSuccess(LoginData loginData);
-        void loginFailed(String message);
+        void doRegister(String username, String password);
+        void registerSuccess(RegisterData registerData);
+        void registerFailed(String message);
     }
 
     interface API {
         @FormUrlEncoded
-        @POST(Constant.ACTION_LOGIN)
-        Single<LoginModel> postLogin(
+        @POST(Constant.ACTION_REGISTER)
+        Single<RegisterModel> postRegister(
                 @Field("username") String username,
                 @Field("password") String password);
     }

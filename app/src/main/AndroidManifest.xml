@@ -21,11 +21,12 @@
         <activity
             android:name=".view.login.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="stateHidden" />
+
         <activity
             android:name=".view.register.RegisterActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:parentActivityName=".view.login.LoginActivity" ></activity>
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName=".view.login.LoginActivity" />
     </application>
 
 </manifest>
