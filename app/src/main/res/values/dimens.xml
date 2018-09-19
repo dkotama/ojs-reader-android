@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="small_padding">8dp</dimen>
     <dimen name="normal_padding">16dp</dimen>
     <dimen name="medium_padding">32dp</dimen>
     <dimen name="large_padding">64dp</dimen>
 
+    <dimen name="small_margin">8dp</dimen>
     <dimen name="normal_margin">16dp</dimen>
     <dimen name="medium_margin">32dp</dimen>
     <dimen name="large_margin">64dp</dimen>
+
+
+    <dimen name="font_title">18sp</dimen>
+    <dimen name="font_subtitle">16sp</dimen>
+    <dimen name="font_body">14sp</dimen>
 </resources>

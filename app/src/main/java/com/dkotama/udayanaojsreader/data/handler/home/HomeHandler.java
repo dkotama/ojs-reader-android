@@ -3,7 +3,9 @@ package com.dkotama.udayanaojsreader.data.handler.home;
 import android.util.Log;
 
 import com.dkotama.udayanaojsreader.data.handler.common.BaseHandler;
+import com.dkotama.udayanaojsreader.data.model.home.HomeModel;
 import com.dkotama.udayanaojsreader.data.model.register.RegisterModel;
+import com.dkotama.udayanaojsreader.presenter.home.HomeContract;
 import com.dkotama.udayanaojsreader.presenter.register.RegisterContract;
 
 import io.reactivex.Single;
@@ -17,42 +19,42 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class HomeHandler extends BaseHandler {
-    private RegisterContract.Presenter presenter;
-    private String TAG = "RegisterHandler";
+    private HomeContract.Presenter presenter;
+    private String TAG = "HomeHandler";
 
-    public HomeHandler(RegisterContract.Presenter presenter) {
+    public HomeHandler(HomeContract.Presenter presenter) {
         super();
         this.presenter = presenter;
     }
 
-    public void doService(String username, String password) {
-        RegisterContract.API api = createRetrofit().build().create(RegisterContract.API.class);
-        Single<RegisterModel> data = api.postRegister(username, password);
+    public void doService() {
+        HomeContract.API api = createRetrofit().build().create(HomeContract.API.class);
+        Single<HomeModel> data = api.getHome();
 
         try {
             data.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new SingleObserver<RegisterModel>() {
+                    .subscribe(new SingleObserver<HomeModel>() {
                         @Override
                         public void onSubscribe(Disposable d) {
                             Log.d(TAG, "onSubscribe: ");
                         }
 
                         @Override
-                        public void onSuccess(RegisterModel model) {
+                        public void onSuccess(HomeModel model) {
                             Log.d(TAG, "onSuccess: ");
                             String errMessage = model.getError();
 
                             if (errMessage != null) {
-                                presenter.registerFailed("Something Error");
+                                presenter.loadHomeFailed("Something Error");
                             } else {
-                                presenter.registerSuccess(model.getData());
+                                presenter.loadHomeSuccess(model.getData());
                             }
                         }
 
                         @Override
                         public void onError(Throwable e) {
-                            presenter.registerFailed(e.getLocalizedMessage());
+                            presenter.loadHomeFailed(e.getLocalizedMessage());
                         }
                     });
         } catch (Exception e) {

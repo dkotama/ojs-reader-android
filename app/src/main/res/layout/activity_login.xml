@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:id="@+id/content_container"
-        android:layout_marginTop="@dimen/large_margin"
+        android:layout_marginTop="@dimen/medium_margin"
         android:orientation="vertical"
         android:layout_marginLeft="@dimen/normal_padding"
         android:layout_marginRight="@dimen/normal_padding"
@@ -63,6 +63,7 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/register_text_container"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/medium_margin"
             android:layout_width="match_parent"
@@ -85,17 +86,17 @@
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:background="@color/colorPrimary"
+            android:text="LOGIN"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
-    <Button
-        android:layout_alignParentBottom="true"
-        android:id="@+id/btn_login"
-        android:textColor="@android:color/white"
-        android:text="LOGIN"
-        android:background="@color/colorPrimary"
-        android:layout_marginTop="@dimen/large_margin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 
 

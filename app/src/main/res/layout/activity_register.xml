@@ -53,6 +53,14 @@
                     android:layout_height="wrap_content" />
 
 
+                <Button
+                    android:id="@+id/btn_register"
+                    android:textColor="@android:color/white"
+                    android:text="REGISTER"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
             <ProgressBar
                 android:visibility="gone"
@@ -64,15 +72,6 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <Button
-        android:layout_alignParentBottom="true"
-        android:id="@+id/btn_register"
-        android:textColor="@android:color/white"
-        android:text="REGISTER"
-        android:background="@color/colorPrimary"
-        android:layout_marginTop="@dimen/large_margin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 
 

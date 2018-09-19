@@ -9,6 +9,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class JournalItemData {
     @Expose
+    @SerializedName("id")
+    int id;
+
+    @Expose
     @SerializedName("name")
     String name;
 
@@ -19,6 +23,10 @@ public class JournalItemData {
     @Expose
     @SerializedName("imageUrl")
     String imageUrl;
+
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;

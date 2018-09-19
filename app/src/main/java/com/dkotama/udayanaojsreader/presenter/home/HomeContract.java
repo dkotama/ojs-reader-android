@@ -1,10 +1,15 @@
 package com.dkotama.udayanaojsreader.presenter.home;
 
+import com.dkotama.udayanaojsreader.common.Constant;
 import com.dkotama.udayanaojsreader.data.model.home.HomeData;
 import com.dkotama.udayanaojsreader.data.model.home.HomeModel;
 import com.dkotama.udayanaojsreader.data.model.home.JournalItemData;
 
 import java.util.List;
+
+import io.reactivex.Single;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 
 /**
  * Created by dkotama on 19/09/18.
@@ -25,6 +30,7 @@ public interface HomeContract {
     }
 
     interface API {
-
+        @GET(Constant.ACTION_HOME)
+        Single<HomeModel> getHome();
     }
 }
