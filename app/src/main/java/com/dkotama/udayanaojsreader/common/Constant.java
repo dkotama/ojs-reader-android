@@ -9,11 +9,12 @@ public class Constant {
     public static String SERVER_URL = "https://young-falls-91410.herokuapp.com/api/";
 
     // Filename
-    final public static String REALM_FILENAME = "ojsreader_db";
+    final public static String REALM_FILENAME = "ojsreader_db.realm";
+    final public static String PREFERENCE_FILENAME = "ojsreader_preference";
 
 
     // Action
     final public static String ACTION_LOGIN = "login";
     final public static String ACTION_REGISTER = "register";
-
+    final public static String ACTION_HOME = "journal";
 }

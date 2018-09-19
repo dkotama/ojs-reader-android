@@ -2,6 +2,7 @@ package com.dkotama.udayanaojsreader.presenter.login;
 
 import android.util.Log;
 
+import com.dkotama.udayanaojsreader.common.UserPreference;
 import com.dkotama.udayanaojsreader.data.handler.login.LoginHandler;
 import com.dkotama.udayanaojsreader.data.model.login.LoginData;
 
@@ -25,8 +26,11 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void loginSuccess(LoginData loginData) {
-        // save to preference
-        Log.d("LoginPresenter", "loginSuccess: " + loginData.getUsername() + ", " + loginData.getPassword());
+        UserPreference preference  = new UserPreference();
+
+        preference.write(UserPreference.USER_ID, loginData.getId());
+        preference.write(UserPreference.USERNAME, loginData.getUsername());
+
         view.onLoginSuccess();
     }
 

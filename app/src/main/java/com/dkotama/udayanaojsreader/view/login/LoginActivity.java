@@ -14,6 +14,7 @@ import com.dkotama.udayanaojsreader.R;
 import com.dkotama.udayanaojsreader.presenter.login.LoginContract;
 import com.dkotama.udayanaojsreader.presenter.login.LoginPresenter;
 import com.dkotama.udayanaojsreader.view.common.CommonActivity;
+import com.dkotama.udayanaojsreader.view.home.HomeActivity;
 import com.dkotama.udayanaojsreader.view.register.RegisterActivity;
 
 
@@ -57,9 +58,9 @@ public class LoginActivity extends CommonActivity implements LoginContract.View 
     public void onLoginSuccess() {
         enableInput();
 
-        // temporary demo for login success
-        android.support.v7.app.AlertDialog.Builder builder = makeDialogBuilder("Selamat Datang", "Login Sukses", null);
-        builder.create().show();
+        Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+        startActivity(intent);
+        finishAffinity();
     }
 
     @Override
@@ -70,11 +71,6 @@ public class LoginActivity extends CommonActivity implements LoginContract.View 
 
     // Private Function
     private void gotoRegister() {
-        Intent intent = new Intent(getBaseContext(), RegisterActivity.class);
-        startActivity(intent);
-    }
-
-    private void gotoHome() {
         Intent intent = new Intent(getBaseContext(), RegisterActivity.class);
         startActivity(intent);
     }

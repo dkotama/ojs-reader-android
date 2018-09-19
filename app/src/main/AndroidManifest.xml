@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dkotama.udayanaojsreader">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -22,11 +23,11 @@
             android:name=".view.login.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
-
         <activity
             android:name=".view.register.RegisterActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:parentActivityName=".view.login.LoginActivity" />
+            android:parentActivityName=".view.login.LoginActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".view.home.HomeActivity"></activity>
     </application>
 
 </manifest>
