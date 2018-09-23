@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dkotama.udayanaojsreader.view.journal.JournalActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--Vertical Separator-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--Top View-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+                <ImageView
+                    android:id="@+id/journal_image"
+                    android:padding="@dimen/small_padding"
+                    android:background="@android:color/darker_gray"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/journal_title"
+                        android:text="Jurnal Ilmiah Teknik Elektro"
+                        android:layout_marginTop="@dimen/medium_margin"
+                        android:paddingTop="@dimen/small_margin"
+                        android:padding="@dimen/small_padding"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/font_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/journal_description"
+                        android:padding="@dimen/small_padding"
+                        android:textSize="@dimen/font_subtitle"
+                        android:text="The Releases page provides an AppImage that runs on most Linux systems. No installation is needed, just download nvim.appimage and run it. (It might not work if your Linux distribution is more than 4 years old.)"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--End of Top View-->
+            <TextView
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/font_title"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:text="Latest Issue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="@dimen/medium_margin"
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <Button
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:paddingBottom="@dimen/small_margin"
+                android:textColor="@android:color/white"
+                android:background="@color/colorPrimary"
+                android:id="@+id/seeall_btn"
+                android:text="See All Issues"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <!--End Vertical Separator-->
+    </ScrollView>
+
+
+</RelativeLayout>

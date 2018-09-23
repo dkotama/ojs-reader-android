@@ -11,7 +11,8 @@ import android.widget.TextView;
 
 import com.dkotama.udayanaojsreader.R;
 import com.dkotama.udayanaojsreader.common.Constant;
-import com.dkotama.udayanaojsreader.data.model.home.JournalItemData;
+import com.dkotama.udayanaojsreader.data.model.journal.JournalItemData;
+import com.dkotama.udayanaojsreader.presenter.home.HomeContract;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -23,10 +24,12 @@ import java.util.List;
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.JournalViewHolder>{
     private Context context;
     private List<JournalItemData> journals;
+    private HomeContract.View view;
 
-    public HomeAdapter(Context ctx, List<JournalItemData> jl) {
+    public HomeAdapter(Context ctx, List<JournalItemData> jl, HomeContract.View view) {
         context = ctx;
         journals = jl;
+        this.view = view;
     }
 
     @Override
@@ -52,6 +55,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.JournalViewHol
             @Override
             public void onClick(View v) {
                 Log.d("Journal CardView", "onClick: " + item.getId());
+                view.onClickJournalItem(item.getId());
             }
         });
     }

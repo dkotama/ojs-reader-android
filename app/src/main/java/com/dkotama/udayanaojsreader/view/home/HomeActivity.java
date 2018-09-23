@@ -5,12 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,13 +17,13 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.dkotama.udayanaojsreader.R;
-import com.dkotama.udayanaojsreader.data.model.home.JournalItemData;
+import com.dkotama.udayanaojsreader.data.model.journal.JournalItemData;
 import com.dkotama.udayanaojsreader.presenter.home.HomeContract;
 import com.dkotama.udayanaojsreader.presenter.home.HomePresenter;
 import com.dkotama.udayanaojsreader.view.common.CommonActivity;
+import com.dkotama.udayanaojsreader.view.journal.JournalActivity;
 import com.dkotama.udayanaojsreader.view.login.LoginActivity;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class HomeActivity extends CommonActivity implements HomeContract.View {
@@ -82,7 +80,7 @@ public class HomeActivity extends CommonActivity implements HomeContract.View {
 
     @Override
     public void onLoadHomeSuccess(List<JournalItemData> journals) {
-        adapter = new HomeAdapter(getBaseContext(), journals);
+        adapter = new HomeAdapter(getBaseContext(), journals, this);
         recyclerView.setAdapter(adapter);
 
         progressBar.setVisibility(View.INVISIBLE);
@@ -105,6 +103,14 @@ public class HomeActivity extends CommonActivity implements HomeContract.View {
         Intent intent = new Intent(getBaseContext(), LoginActivity.class);
         startActivity(intent);
         finishAffinity();
+    }
+
+    @Override
+    public void onClickJournalItem(int journalID) {
+        Intent intent = new Intent(getBaseContext(), JournalActivity.class);
+        intent.putExtra(JournalActivity.KEY_JOURNALID, journalID);
+
+        startActivity(intent);
     }
 
     private void askLogout() {

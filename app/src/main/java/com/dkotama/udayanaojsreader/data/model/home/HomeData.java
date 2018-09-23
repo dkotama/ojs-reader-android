@@ -1,5 +1,6 @@
 package com.dkotama.udayanaojsreader.data.model.home;
 
+import com.dkotama.udayanaojsreader.data.model.journal.JournalItemData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
