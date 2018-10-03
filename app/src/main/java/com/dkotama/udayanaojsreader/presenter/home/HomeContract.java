@@ -20,7 +20,7 @@ public interface HomeContract {
         void onLoadHomeFailed(String message);
         void onLogoutSuccess();
 
-        void onClickJournalItem(int journalID);
+        void onClickJournalItem(JournalItemData item);
     }
 
     interface Presenter {

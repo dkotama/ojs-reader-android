@@ -6,6 +6,7 @@
     tools:context="com.dkotama.udayanaojsreader.view.journal.JournalActivity">
 
     <ScrollView
+        android:id="@+id/journal_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -24,7 +25,6 @@
                 <ImageView
                     android:id="@+id/journal_image"
                     android:padding="@dimen/small_padding"
-                    android:background="@android:color/darker_gray"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent" />
@@ -50,7 +50,7 @@
                         android:id="@+id/journal_description"
                         android:padding="@dimen/small_padding"
                         android:textSize="@dimen/font_subtitle"
-                        android:text="The Releases page provides an AppImage that runs on most Linux systems. No installation is needed, just download nvim.appimage and run it. (It might not work if your Linux distribution is more than 4 years old.)"
+                        android:text="The Releases page provides an AppImage that runs on most \nLinux systems. No installation is needed, just download nvim.appimage and run it. (It might not work if your Linux distribution is more than 4 years old.)"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </LinearLayout>
@@ -60,20 +60,36 @@
             <TextView
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/font_title"
+                android:layout_marginTop="@dimen/small_margin"
                 android:layout_marginLeft="@dimen/small_margin"
                 android:text="Latest Issue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <android.support.v7.widget.RecyclerView
-                android:layout_marginTop="@dimen/medium_margin"
-                android:id="@+id/recycler_view"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
-            </android.support.v7.widget.RecyclerView>
+                <android.support.v7.widget.RecyclerView
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+
+            <ProgressBar
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/progressbar"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
 
             <Button
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:layout_marginRight="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/medium_margin"
                 android:layout_marginBottom="@dimen/medium_margin"
                 android:paddingBottom="@dimen/small_margin"
@@ -87,6 +103,4 @@
         </LinearLayout>
         <!--End Vertical Separator-->
     </ScrollView>
-
-
 </RelativeLayout>

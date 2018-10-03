@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    
+    <TextView
+        android:textSize="@dimen/font_subtitle"
+        android:id="@+id/header_textview"
+        android:background="@color/tableHeader"
+        android:textStyle="bold"
+        android:paddingTop="@dimen/small_padding"
+        android:paddingLeft="@dimen/small_padding"
+        android:paddingRight="@dimen/small_padding"
+        android:paddingBottom="@dimen/small_padding"
+        android:text="Lorem Ipsum dolor sit amerta kolour sompre va Lorem Ipsum dolor sit amerta kolour sompre vaLorem Ipsum dolor sit amerta kolour sompre vaLorem Ipsum dolor sit "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

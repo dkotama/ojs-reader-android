@@ -12,22 +12,19 @@ import retrofit2.http.Path;
  * Created by dkotama on 21/09/18.
  */
 
-public class JournalContract {
-   public interface View {
+public interface  JournalContract {
+   interface View {
        void onLoadJournalSuccess(JournalItemData data);
        void onLoadJournalFailed(String str);
    }
 
-   public interface Presenter {
+   interface Presenter {
        void loadJournal(int journalID);
        void loadJournalSuccess(JournalItemData data);
        void loadJournalFailed(String str);
    }
 
-    public interface API {
-//        @GET(Constant.ACTION_JOURNALS)
-//        Single<JournalModel> getJournal();
-
+   interface API {
         @GET(Constant.ACTION_JOURNALS + "/{journalID}/")
         Single<JournalModel> getJournal(
                 @Path("journalID") int journalID);

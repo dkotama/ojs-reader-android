@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:paddingTop="@dimen/small_padding"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <TextView
+        android:id="@+id/paper_title_textview"
+        android:textStyle="bold"
+        android:paddingTop="@dimen/small_padding"
+        android:paddingLeft="@dimen/small_padding"
+        android:paddingRight="@dimen/small_padding"
+        android:paddingBottom="@dimen/small_padding"
+        android:text="Lorem Ipsum dolor sit amerta kolour sompre va Lorem Ipsum dolor sit amerta kolour sompre vaLorem Ipsum dolor sit amerta kolour sompre vaLorem Ipsum dolor sit "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textStyle="italic"
+            android:id="@+id/paper_authors_textview"
+            android:paddingLeft="@dimen/small_padding"
+            android:paddingRight="@dimen/small_padding"
+            android:paddingBottom="@dimen/small_padding"
+            android:text="Audrey Viva, Marcus Aurelius"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textAlignment="textEnd"
+            android:id="@+id/paper_page_textview"
+            android:paddingLeft="@dimen/small_padding"
+            android:paddingRight="@dimen/medium_padding"
+            android:paddingBottom="@dimen/small_padding"
+            android:text="Page 1-9"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

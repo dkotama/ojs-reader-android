@@ -23,11 +23,11 @@ public class JournalPresenter implements JournalContract.Presenter {
 
     @Override
     public void loadJournalSuccess(JournalItemData data) {
-
+        view.onLoadJournalSuccess(data);
     }
 
     @Override
     public void loadJournalFailed(String str) {
-
+        view.onLoadJournalFailed(str);
     }
 }

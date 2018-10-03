@@ -54,8 +54,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.JournalViewHol
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Journal CardView", "onClick: " + item.getId());
-                view.onClickJournalItem(item.getId());
+                view.onClickJournalItem(item);
             }
         });
     }

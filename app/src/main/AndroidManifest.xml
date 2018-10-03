@@ -32,7 +32,6 @@
         <activity android:name=".view.home.HomeActivity" />
 
         <activity android:name=".view.journal.JournalActivity"
-            android:parentActivityName=".view.home.HomeActivity"
             android:screenOrientation="portrait" />
     </application>
 

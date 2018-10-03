@@ -5,7 +5,7 @@ package com.dkotama.udayanaojsreader.common;
  */
 
 public class Constant {
-//    public static String SERVER_URL = "http://localhost:5001/api/";
+    //    public static String SERVER_URL = "http://localhost:5001/api/";
     public static String SERVER_URL = "https://young-falls-91410.herokuapp.com/api/";
     public static String PICTURE_URL = "https://young-falls-91410.herokuapp.com/covers/";
 
@@ -19,6 +19,7 @@ public class Constant {
     final public static String ACTION_LOGIN = "login";
     final public static String ACTION_REGISTER = "register";
     final public static String ACTION_JOURNALS = "journals";
+    public static final String ACTION_LATEST_ISSUE = "latest" ;
 
 
 }

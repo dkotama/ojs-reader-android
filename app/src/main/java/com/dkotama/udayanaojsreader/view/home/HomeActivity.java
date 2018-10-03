@@ -106,9 +106,9 @@ public class HomeActivity extends CommonActivity implements HomeContract.View {
     }
 
     @Override
-    public void onClickJournalItem(int journalID) {
+    public void onClickJournalItem(JournalItemData item) {
         Intent intent = new Intent(getBaseContext(), JournalActivity.class);
-        intent.putExtra(JournalActivity.KEY_JOURNALID, journalID);
+        intent.putExtra(JournalActivity.KEY_JOURNAL_ITEM, item);
 
         startActivity(intent);
     }
