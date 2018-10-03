@@ -30,8 +30,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".view.home.HomeActivity" />
-
-        <activity android:name=".view.journal.JournalActivity"
+        <activity
+            android:name=".view.journal.JournalActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".view.issue.AllIssueActivity"
             android:screenOrientation="portrait" />
     </application>
 

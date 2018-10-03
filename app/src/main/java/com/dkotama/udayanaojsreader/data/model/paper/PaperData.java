@@ -1,4 +1,4 @@
-package com.dkotama.udayanaojsreader.data.model.journal;
+package com.dkotama.udayanaojsreader.data.model.paper;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

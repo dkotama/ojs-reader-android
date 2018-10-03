@@ -12,10 +12,10 @@ import android.widget.ProgressBar;
 import com.dkotama.udayanaojsreader.R;
 import com.dkotama.udayanaojsreader.presenter.register.RegisterContract;
 import com.dkotama.udayanaojsreader.presenter.register.RegisterPresenter;
-import com.dkotama.udayanaojsreader.view.common.CommonActivity;
+import com.dkotama.udayanaojsreader.view.common.BaseActivity;
 import com.dkotama.udayanaojsreader.view.login.LoginActivity;
 
-public class RegisterActivity extends CommonActivity implements RegisterContract.View {
+public class RegisterActivity extends BaseActivity implements RegisterContract.View {
 
     RegisterContract.Presenter presenter;
     Button registerBtn;

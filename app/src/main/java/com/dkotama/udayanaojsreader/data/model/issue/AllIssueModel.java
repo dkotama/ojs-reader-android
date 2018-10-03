@@ -1,13 +1,15 @@
-package com.dkotama.udayanaojsreader.data.model.journal;
+package com.dkotama.udayanaojsreader.data.model.issue;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 /**
  * Created by dkotama on 19/09/18.
  */
 
-public class LatestIssueModel {
+public class AllIssueModel {
     @SerializedName("status")
     @Expose
     private int status;
@@ -18,7 +20,7 @@ public class LatestIssueModel {
 
     @SerializedName("data")
     @Expose
-    private IssueData data;
+    private List<IssueData> data;
 
     public int getStatus() {
         return status;
@@ -28,7 +30,7 @@ public class LatestIssueModel {
         return error;
     }
 
-    public IssueData getData() {
+    public List<IssueData> getData() {
         return data;
     }
 }

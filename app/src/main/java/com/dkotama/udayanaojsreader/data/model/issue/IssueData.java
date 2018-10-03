@@ -1,8 +1,6 @@
-package com.dkotama.udayanaojsreader.data.model.journal;
+package com.dkotama.udayanaojsreader.data.model.issue;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
+import com.dkotama.udayanaojsreader.data.model.paper.PaperData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

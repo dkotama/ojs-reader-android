@@ -1,7 +1,7 @@
-package com.dkotama.udayanaojsreader.presenter.journal;
+package com.dkotama.udayanaojsreader.presenter.issue;
 
-import com.dkotama.udayanaojsreader.data.handler.journal.LatestIssueHandler;
-import com.dkotama.udayanaojsreader.data.model.journal.IssueData;
+import com.dkotama.udayanaojsreader.data.handler.issue.LatestIssueHandler;
+import com.dkotama.udayanaojsreader.data.model.issue.IssueData;
 
 /**
  * Created by dkotama on 29/09/18.

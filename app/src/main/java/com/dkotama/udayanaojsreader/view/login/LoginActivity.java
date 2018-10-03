@@ -1,9 +1,7 @@
 package com.dkotama.udayanaojsreader.view.login;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,12 +11,12 @@ import android.widget.TextView;
 import com.dkotama.udayanaojsreader.R;
 import com.dkotama.udayanaojsreader.presenter.login.LoginContract;
 import com.dkotama.udayanaojsreader.presenter.login.LoginPresenter;
-import com.dkotama.udayanaojsreader.view.common.CommonActivity;
+import com.dkotama.udayanaojsreader.view.common.BaseActivity;
 import com.dkotama.udayanaojsreader.view.home.HomeActivity;
 import com.dkotama.udayanaojsreader.view.register.RegisterActivity;
 
 
-public class LoginActivity extends CommonActivity implements LoginContract.View {
+public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     Button loginBtn;
     TextView registerBtn;

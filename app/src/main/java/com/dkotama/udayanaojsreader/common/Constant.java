@@ -20,6 +20,7 @@ public class Constant {
     final public static String ACTION_REGISTER = "register";
     final public static String ACTION_JOURNALS = "journals";
     public static final String ACTION_LATEST_ISSUE = "latest" ;
+    public static final String ACTION_ALL_ISSUE = "issues" ;
 
 
 }

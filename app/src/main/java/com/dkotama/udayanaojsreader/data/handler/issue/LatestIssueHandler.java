@@ -1,10 +1,10 @@
-package com.dkotama.udayanaojsreader.data.handler.journal;
+package com.dkotama.udayanaojsreader.data.handler.issue;
 
 import android.util.Log;
 
 import com.dkotama.udayanaojsreader.data.handler.common.BaseHandler;
-import com.dkotama.udayanaojsreader.data.model.journal.LatestIssueModel;
-import com.dkotama.udayanaojsreader.presenter.journal.LatestIssueContract;
+import com.dkotama.udayanaojsreader.data.model.issue.LatestIssueModel;
+import com.dkotama.udayanaojsreader.presenter.issue.LatestIssueContract;
 
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;

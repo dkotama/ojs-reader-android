@@ -1,8 +1,8 @@
-package com.dkotama.udayanaojsreader.presenter.journal;
+package com.dkotama.udayanaojsreader.presenter.issue;
 
 import com.dkotama.udayanaojsreader.common.Constant;
-import com.dkotama.udayanaojsreader.data.model.journal.IssueData;
-import com.dkotama.udayanaojsreader.data.model.journal.LatestIssueModel;
+import com.dkotama.udayanaojsreader.data.model.issue.IssueData;
+import com.dkotama.udayanaojsreader.data.model.issue.LatestIssueModel;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;

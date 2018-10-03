@@ -20,13 +20,13 @@ import com.dkotama.udayanaojsreader.R;
 import com.dkotama.udayanaojsreader.data.model.journal.JournalItemData;
 import com.dkotama.udayanaojsreader.presenter.home.HomeContract;
 import com.dkotama.udayanaojsreader.presenter.home.HomePresenter;
-import com.dkotama.udayanaojsreader.view.common.CommonActivity;
+import com.dkotama.udayanaojsreader.view.common.BaseActivity;
 import com.dkotama.udayanaojsreader.view.journal.JournalActivity;
 import com.dkotama.udayanaojsreader.view.login.LoginActivity;
 
 import java.util.List;
 
-public class HomeActivity extends CommonActivity implements HomeContract.View {
+public class HomeActivity extends BaseActivity implements HomeContract.View {
 
     HomeContract.Presenter presenter;
     String TAG = "HomeActivity";
