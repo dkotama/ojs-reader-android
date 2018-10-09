@@ -48,7 +48,7 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemViewType(int position) {
-        //Log.d(TAG, "getItemViewType: " + position + " - IS_HEADER: " + issueItems.get(position).isHeader());
+        Log.d(TAG, "getItemViewType: " + position + " - IS_HEADER: " + issueItems.get(position).isHeader());
         return (issueItems.get(position).isHeader() ? TYPE_HEADER : TYPE_ITEM);
     }
 
@@ -62,12 +62,12 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         switch (viewType) {
             case TYPE_HEADER:
-                //Log.d(TAG, "onCreateViewHolder: TYPE HEADER");
+                Log.d(TAG, "onCreateViewHolder: TYPE HEADER");
                 View header = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.issue_section_header, parent, false);
                 return new SectionHeaderViewHolder(header);
             case TYPE_ITEM:
-                //Log.d(TAG, "onCreateViewHolder: TYPE ITEM");
+                Log.d(TAG, "onCreateViewHolder: TYPE ITEM");
                 View item = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.issue_section_item, parent, false);
 
@@ -84,11 +84,11 @@ public class IssueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         if (item.isHeader()) {
             ((SectionHeaderViewHolder) holder).sectionTitle.setText(item.getTitle());
 
-            //Log.d(TAG, "onBindViewHolder: TYPE HEADER " + position);
+            Log.d(TAG, "onBindViewHolder: TYPE HEADER " + position);
             return;
         }
 
-        //Log.d(TAG, "onBindViewHolder: TYPE ITEM " + position);
+        Log.d(TAG, "onBindViewHolder: TYPE ITEM " + position);
         ((SectionItemViewHolder) holder).sectionItemTitle.setText(item.getTitle());
         ((SectionItemViewHolder) holder).authors.setText(item.getAuthors());
         ((SectionItemViewHolder) holder).pages.setText(item.getPages());

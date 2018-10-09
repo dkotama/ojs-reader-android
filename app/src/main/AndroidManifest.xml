@@ -33,8 +33,10 @@
         <activity
             android:name=".view.journal.JournalActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".view.issue.AllIssueActivity"
+        <activity
+            android:name=".view.issue.AllIssueActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".view.paper.PaperActivity"></activity>
     </application>
 
 </manifest>
