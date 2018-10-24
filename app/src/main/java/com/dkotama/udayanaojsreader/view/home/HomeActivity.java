@@ -1,30 +1,35 @@
 package com.dkotama.udayanaojsreader.view.home;
 
 import android.app.AlertDialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dkotama.udayanaojsreader.R;
-import com.dkotama.udayanaojsreader.data.model.journal.JournalItemData;
+import com.dkotama.udayanaojsreader.data.scidir.HomeEntryItemData;
+import com.dkotama.udayanaojsreader.data.scidir.SearchResultModel;
 import com.dkotama.udayanaojsreader.presenter.home.HomeContract;
 import com.dkotama.udayanaojsreader.presenter.home.HomePresenter;
 import com.dkotama.udayanaojsreader.view.common.BaseActivity;
-import com.dkotama.udayanaojsreader.view.journal.JournalActivity;
 import com.dkotama.udayanaojsreader.view.login.LoginActivity;
-
-import java.util.List;
+import com.dkotama.udayanaojsreader.view.paper.PaperActivity;
 
 public class HomeActivity extends BaseActivity implements HomeContract.View {
 
@@ -33,7 +38,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
 
     RecyclerView recyclerView;
     ProgressBar progressBar;
-    HomeAdapter adapter;
+    HomeVerticalAdapter adapter = new HomeVerticalAdapter();
+    TextView totalJournalTV;
+    String searchQuery = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,22 +51,47 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
 
         recyclerView = findViewById(R.id.recycler_view);
         progressBar = findViewById(R.id.progressbar);
+        totalJournalTV = findViewById(R.id.total_journal_tv);
 
 
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this.getBaseContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(layoutManager);
 
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-
         presenter = new HomePresenter(this);
-        presenter.loadHome();
+        progressBar.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            searchQuery = intent.getStringExtra(SearchManager.QUERY);
+            totalJournalTV.setText("Searching...");
+
+            if (adapter.getItemCount() > 0) {
+                adapter.resetData();
+                adapter.notifyDataSetChanged();
+            }
+
+            presenter.loadHome(searchQuery);
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            Toast.makeText(this, "NULL", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.home_menu, menu);
+
+        // Get the SearchView and set the searchable configuration
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+
+        // Assumes current activity is the searchable activity
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setIconifiedByDefault(true); // Do not iconify the widget; expand it by default
 
         return true;
     }
@@ -79,18 +111,15 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
     }
 
     @Override
-    public void onLoadHomeSuccess(List<JournalItemData> journals) {
-        adapter = new HomeAdapter(getBaseContext(), journals, this);
+    public void onLoadHomeSuccess(SearchResultModel model) {
+        adapter = new HomeVerticalAdapter(model.getResults().getEntries(), this);
         recyclerView.setAdapter(adapter);
 
-        progressBar.setVisibility(View.INVISIBLE);
+        totalJournalTV.setText("Total Open Access Articles: " + model.getResults().getTotalResults());
 
-//        for (Iterator<JournalItemData> j = journals.iterator(); j.hasNext();) {
-//            JournalItemData journal = j.next();
-//
-//            Log.d(TAG, "ID: " + journal.getId());
-//        }
+        progressBar.setVisibility(View.INVISIBLE);
     }
+
 
     @Override
     public void onLoadHomeFailed(String message) {
@@ -106,10 +135,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
     }
 
     @Override
-    public void onClickJournalItem(JournalItemData item) {
-        Intent intent = new Intent(getBaseContext(), JournalActivity.class);
-        intent.putExtra(JournalActivity.KEY_JOURNAL_ITEM, item);
-
+    public void onClickJournalItem(HomeEntryItemData item) {
+        Intent intent = new Intent(getBaseContext(), PaperActivity.class);
+        intent.putExtra("pdfUrl", item.getPdfUrl());
         startActivity(intent);
     }
 

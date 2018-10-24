@@ -6,13 +6,20 @@
     android:layout_height="match_parent"
     tools:context="com.dkotama.udayanaojsreader.view.home.HomeActivity">
 
+    <TextView
+        android:paddingLeft="@dimen/small_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:id="@+id/total_journal_tv"
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_below="@id/total_journal_tv"
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-
 
 
     <ProgressBar
@@ -20,7 +27,6 @@
         android:id="@+id/progressbar"
         android:layout_width="100dp"
         android:layout_height="100dp" />
-
 
 
 

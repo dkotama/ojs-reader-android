@@ -14,4 +14,6 @@
     <dimen name="font_title">18sp</dimen>
     <dimen name="font_subtitle">16sp</dimen>
     <dimen name="font_body">14sp</dimen>
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_xsmall">10sp</dimen>
 </resources>

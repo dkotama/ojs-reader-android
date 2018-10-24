@@ -65,17 +65,17 @@ public class JournalActivity extends BaseActivity implements LatestIssueContract
         journal = data.getParcelable(KEY_JOURNAL_ITEM);
 
         if (journal != null) {
-            presenter.loadLatest(journal.getId());
+//            presenter.loadLatest(journal.getId());
 
-            String imageUrl = Constant.PICTURE_URL + journal.getImageUrl();
+//            String imageUrl = Constant.PICTURE_URL + journal.getImageUrl();
+//            String imageUrl =
+//            Picasso.with(getBaseContext())
+//                    .load(imageUrl)
+//                    .into(journalImage);
 
-            Picasso.with(getBaseContext())
-                    .load(imageUrl)
-                    .into(journalImage);
-
-            journalTitle.setText(journal.getName());
-            journalDescription.setText(journal.getDesc());
-            scrollView.setVisibility(View.VISIBLE);
+//            journalTitle.setText(journal.getName());
+//            journalDescription.setText(journal.getDesc());
+//            scrollView.setVisibility(View.VISIBLE);
         } else {
             makeError("Load Journal Error", "Error");
         }

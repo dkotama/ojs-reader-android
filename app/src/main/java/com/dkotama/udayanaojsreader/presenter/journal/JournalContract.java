@@ -25,8 +25,8 @@ public interface  JournalContract {
    }
 
    interface API {
-        @GET(Constant.ACTION_JOURNALS + "/{journalID}/")
-        Single<JournalModel> getJournal(
-                @Path("journalID") int journalID);
+//        @GET(Constant.ACTION_JOURNALS + "/{journalID}/")
+//        Single<JournalModel> getJournal(
+//                @Path("journalID") int journalID);
     }
 }

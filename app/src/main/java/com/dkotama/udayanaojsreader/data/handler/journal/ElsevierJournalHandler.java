@@ -3,8 +3,6 @@ package com.dkotama.udayanaojsreader.data.handler.journal;
 import android.util.Log;
 
 import com.dkotama.udayanaojsreader.data.handler.common.BaseHandler;
-import com.dkotama.udayanaojsreader.data.model.home.HomeModel;
-import com.dkotama.udayanaojsreader.data.model.journal.JournalItemData;
 import com.dkotama.udayanaojsreader.data.model.journal.JournalModel;
 import com.dkotama.udayanaojsreader.presenter.journal.JournalContract;
 
@@ -18,11 +16,11 @@ import io.reactivex.schedulers.Schedulers;
  * Created by dkotama on 18/09/18.
  */
 
-public class JournalHandler extends BaseHandler {
+public class ElsevierJournalHandler extends BaseHandler {
     private JournalContract.Presenter presenter;
     private String TAG = "JournalHandler";
 
-    public JournalHandler(JournalContract.Presenter presenter) {
+    public ElsevierJournalHandler(JournalContract.Presenter presenter) {
         super();
         this.presenter = presenter;
     }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:paddingTop="@dimen/small_padding"
+    android:paddingBottom="@dimen/small_padding"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <TextView
+        android:id="@+id/paper_title_textview"
+        android:textStyle="bold"
+        android:paddingTop="@dimen/small_padding"
+        android:paddingLeft="@dimen/small_padding"
+        android:paddingRight="@dimen/small_padding"
+        android:paddingBottom="@dimen/small_padding"
+        android:text="Lorem Ipsum dolor sit amerta kolour sompre va Lorem Ipsum dolor sit amerta kolour sompre vaLorem Ipsum dolor sit amerta kolour sompre vaLorem Ipsum dolor sit "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textStyle="italic"
+        android:id="@+id/paper_authors_textview"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:paddingLeft="@dimen/small_padding"
+        android:paddingRight="@dimen/small_padding"
+        android:paddingBottom="@dimen/small_padding"
+        android:text="Audrey Viva, Marcus Aurelius"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginLeft="@dimen/small_margin"
+            android:textSize="@dimen/font_xsmall"
+            android:id="@+id/paper_doi"
+            android:paddingLeft="@dimen/small_padding"
+            android:paddingRight="@dimen/small_padding"
+            android:paddingBottom="@dimen/small_padding"
+            android:text="DOI: 10.1016/j.egyr.2017.11.002"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/paper_pdf_imgview"
+                android:src="@drawable/icons8_pdf_50"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+            <ImageView
+                android:id="@+id/paper_pdf_favorite"
+                android:src="@drawable/ic_favorite_black_24dp"
+                android:tint="@android:color/black"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

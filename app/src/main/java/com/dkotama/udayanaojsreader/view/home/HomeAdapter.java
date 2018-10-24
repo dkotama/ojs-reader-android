@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.dkotama.udayanaojsreader.R;
 import com.dkotama.udayanaojsreader.common.Constant;
 import com.dkotama.udayanaojsreader.data.model.journal.JournalItemData;
+import com.dkotama.udayanaojsreader.data.scidir.HomeEntryItemData;
 import com.dkotama.udayanaojsreader.presenter.home.HomeContract;
 import com.squareup.picasso.Picasso;
 
@@ -23,10 +24,11 @@ import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.JournalViewHolder>{
     private Context context;
-    private List<JournalItemData> journals;
+    private List<HomeEntryItemData> journals;
     private HomeContract.View view;
+    private String TAG = "HomeAdapter";
 
-    public HomeAdapter(Context ctx, List<JournalItemData> jl, HomeContract.View view) {
+    public HomeAdapter(Context ctx, List<HomeEntryItemData> jl, HomeContract.View view) {
         context = ctx;
         journals = jl;
         this.view = view;
@@ -42,21 +44,23 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.JournalViewHol
 
     @Override
     public void onBindViewHolder(JournalViewHolder holder, int position) {
-        final JournalItemData item = journals.get(position);
-        holder.name.setText(item.getName());
+        final HomeEntryItemData item = journals.get(position);
 
-        String imgUrl = Constant.PICTURE_URL + item.getImageUrl();
+        holder.name.setText(item.getPublicationName());
+
+        String imgUrl = item.getCoverImageUrl();
+        Log.d("HomeAdapter", "onBindViewHolder: " + imgUrl);
 
         Picasso.with(context)
                 .load(imgUrl)
                 .into(holder.imageView);
 
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                view.onClickJournalItem(item);
-            }
-        });
+//        holder.imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                view.onClickJournalItem(item);
+//            }
+//        });
     }
 
     @Override

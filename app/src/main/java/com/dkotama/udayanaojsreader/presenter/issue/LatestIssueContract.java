@@ -25,8 +25,8 @@ public interface LatestIssueContract {
    }
 
     interface API {
-        @GET(Constant.ACTION_JOURNALS+ "/{journalID}/" + Constant.ACTION_LATEST_ISSUE)
-        Single<LatestIssueModel> getLatestIssue(
-                @Path("journalID") int journalID);
+//        @GET(Constant.ACTION_JOURNALS+ "/{journalID}/" + Constant.ACTION_LATEST_ISSUE)
+//        Single<LatestIssueModel> getLatestIssue(
+//                @Path("journalID") int journalID);
     }
 }
