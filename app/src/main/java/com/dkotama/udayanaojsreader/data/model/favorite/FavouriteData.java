@@ -1,4 +1,4 @@
-package com.dkotama.udayanaojsreader.data.scidir;
+package com.dkotama.udayanaojsreader.data.model.favorite;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,7 +7,11 @@ import com.google.gson.annotations.SerializedName;
  * Created by dkotama on 23/10/18.
  */
 
-public class SearchEntryItemData {
+public class FavouriteData {
+    @SerializedName("id")
+    @Expose
+    private int id;
+
     @SerializedName("dc:identifier")
     @Expose
     private String identifier;
@@ -64,15 +68,7 @@ public class SearchEntryItemData {
         return teaser;
     }
 
-    public String toString() {
-        return "{ " +
-//                "issn: " + issn +
-//                ", doi: " + doi +
-                ", identifier: " + identifier +
-
-//                ", title: " + title +
-//                ", creator: " + creator +
-//                ", publicationName: " + publicationName + " }";
-         "};";
+    public int getId() {
+        return id;
     }
 }

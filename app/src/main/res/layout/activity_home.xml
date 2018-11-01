@@ -21,12 +21,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <TextView
+        android:id="@+id/empty_fill"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        android:text="Use Above Search to Find Articles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <ProgressBar
         android:layout_centerInParent="true"
         android:id="@+id/progressbar"
         android:layout_width="100dp"
         android:layout_height="100dp" />
+
 
 
 

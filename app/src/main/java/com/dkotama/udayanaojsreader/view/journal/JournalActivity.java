@@ -13,16 +13,14 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.dkotama.udayanaojsreader.R;
-import com.dkotama.udayanaojsreader.common.Constant;
 import com.dkotama.udayanaojsreader.data.model.issue.IssueData;
 import com.dkotama.udayanaojsreader.data.model.journal.JournalItemData;
-import com.dkotama.udayanaojsreader.presenter.journal.IssueClickListener;
 import com.dkotama.udayanaojsreader.presenter.issue.LatestIssueContract;
 import com.dkotama.udayanaojsreader.presenter.issue.LatestIssuePresenter;
+import com.dkotama.udayanaojsreader.presenter.journal.IssueClickListener;
 import com.dkotama.udayanaojsreader.view.common.BaseActivity;
 import com.dkotama.udayanaojsreader.view.issue.AllIssueActivity;
 import com.dkotama.udayanaojsreader.view.issue.IssueAdapter;
-import com.squareup.picasso.Picasso;
 
 
 public class JournalActivity extends BaseActivity implements LatestIssueContract.View, IssueClickListener.View {

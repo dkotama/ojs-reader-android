@@ -1,14 +1,11 @@
 package com.dkotama.udayanaojsreader.presenter.home;
 
-import android.util.Log;
-
+import com.dkotama.udayanaojsreader.common.RealmController;
 import com.dkotama.udayanaojsreader.common.UserPreference;
 import com.dkotama.udayanaojsreader.data.handler.home.HomeHandler;
-import com.dkotama.udayanaojsreader.data.model.home.HomeData;
-import com.dkotama.udayanaojsreader.data.model.journal.ElsevierJournalItemData;
 import com.dkotama.udayanaojsreader.data.scidir.SearchResultModel;
 
-import java.util.List;
+import io.realm.Realm;
 
 /**
  * Created by dkotama on 19/09/18.
@@ -40,6 +37,7 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void logout() {
+        RealmController.with(this).clearAll();
         UserPreference preference = new UserPreference();
         preference.clearPreference();
 

@@ -1,16 +1,7 @@
 package com.dkotama.udayanaojsreader.data.handler.paper;
 
-import android.util.Log;
-
 import com.dkotama.udayanaojsreader.data.handler.common.BaseHandler;
-import com.dkotama.udayanaojsreader.data.model.issue.LatestIssueModel;
 import com.dkotama.udayanaojsreader.presenter.issue.LatestIssueContract;
-
-import io.reactivex.Single;
-import io.reactivex.SingleObserver;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by dkotama on 18/09/18.

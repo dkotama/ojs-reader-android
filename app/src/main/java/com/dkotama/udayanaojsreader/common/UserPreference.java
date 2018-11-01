@@ -2,7 +2,6 @@ package com.dkotama.udayanaojsreader.common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 /**

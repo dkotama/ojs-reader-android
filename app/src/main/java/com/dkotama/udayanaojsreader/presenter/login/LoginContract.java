@@ -1,8 +1,8 @@
 package com.dkotama.udayanaojsreader.presenter.login;
 
 import com.dkotama.udayanaojsreader.common.Constant;
-import com.dkotama.udayanaojsreader.data.model.login.LoginModel;
 import com.dkotama.udayanaojsreader.data.model.login.LoginData;
+import com.dkotama.udayanaojsreader.data.model.login.LoginModel;
 
 import io.reactivex.Single;
 import retrofit2.http.Field;

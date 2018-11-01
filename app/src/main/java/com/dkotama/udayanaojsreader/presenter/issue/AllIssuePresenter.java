@@ -1,7 +1,6 @@
 package com.dkotama.udayanaojsreader.presenter.issue;
 
 import com.dkotama.udayanaojsreader.data.handler.issue.AllIssueHandler;
-import com.dkotama.udayanaojsreader.data.handler.issue.LatestIssueHandler;
 import com.dkotama.udayanaojsreader.data.model.issue.IssueData;
 
 import java.util.List;

@@ -7,19 +7,11 @@ package com.dkotama.udayanaojsreader.data.handler.common;
 import android.util.Log;
 
 import com.dkotama.udayanaojsreader.common.Constant;
-import com.dkotama.udayanaojsreader.common.Core;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.SocketTimeoutException;
 import java.util.HashMap;
 import java.util.Map;
 
-import okhttp3.Cache;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

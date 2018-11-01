@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.dkotama.udayanaojsreader.R;
 import com.dkotama.udayanaojsreader.presenter.login.LoginContract;
 import com.dkotama.udayanaojsreader.presenter.login.LoginPresenter;
+import com.dkotama.udayanaojsreader.view.LoadingActivity;
 import com.dkotama.udayanaojsreader.view.common.BaseActivity;
 import com.dkotama.udayanaojsreader.view.home.HomeActivity;
 import com.dkotama.udayanaojsreader.view.register.RegisterActivity;
@@ -56,7 +57,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     public void onLoginSuccess() {
         enableInput();
 
-        Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+        Intent intent = new Intent(getBaseContext(), LoadingActivity.class);
         startActivity(intent);
         finishAffinity();
     }

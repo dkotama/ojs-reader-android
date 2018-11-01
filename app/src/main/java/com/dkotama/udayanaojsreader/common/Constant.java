@@ -29,6 +29,7 @@ public class Constant {
     public static final String ACTION_LATEST_ISSUE = "latest" ;
     public static final String ACTION_ALL_ISSUE = "issues" ;
     public static final String ACTION_PAPERS = "papers" ;
+    public static final String ACTION_FAVORITES = "favourites" ;
 
     // Static Values
     public static final int HOME_ITEM_AMOUNT = 10 ;

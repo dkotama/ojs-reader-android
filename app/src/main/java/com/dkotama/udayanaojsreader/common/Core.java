@@ -2,7 +2,6 @@ package com.dkotama.udayanaojsreader.common;
 
 import android.app.Application;
 import android.content.Context;
-import android.provider.SyncStateContract;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -22,10 +21,15 @@ public class Core extends Application {
 
         Realm.init(this);
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
-                .name("ojsreader_db.realm")
+                .name(Constant.REALM_FILENAME)
                 .build();
 
         Realm.setDefaultConfiguration(realmConfiguration);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
     }
 
     public static Context getAppContext() {

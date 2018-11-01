@@ -1,7 +1,6 @@
 package com.dkotama.udayanaojsreader.presenter.register;
 
 import com.dkotama.udayanaojsreader.common.Constant;
-import com.dkotama.udayanaojsreader.data.model.login.LoginData;
 import com.dkotama.udayanaojsreader.data.model.register.RegisterData;
 import com.dkotama.udayanaojsreader.data.model.register.RegisterModel;
 

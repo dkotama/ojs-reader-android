@@ -1,4 +1,4 @@
-package com.dkotama.udayanaojsreader.data.model.journal;
+package com.dkotama.udayanaojsreader.data.model.favorite;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by dkotama on 19/09/18.
  */
 
-public class JournalModel {
+public class FavouriteDeleteModel {
     @SerializedName("status")
     @Expose
     private int status;
@@ -18,7 +18,8 @@ public class JournalModel {
 
     @SerializedName("data")
     @Expose
-    private JournalItemData data;
+    private DeleteData data;
+
 
     public int getStatus() {
         return status;
@@ -28,7 +29,17 @@ public class JournalModel {
         return error;
     }
 
-    public JournalItemData getData() {
+    public DeleteData getData() {
         return data;
+    }
+
+    private class DeleteData {
+        @SerializedName("success")
+        @Expose
+        private Boolean success;
+
+        public Boolean getSuccess() {
+            return success;
+        }
     }
 }

@@ -3,24 +3,15 @@ package com.dkotama.udayanaojsreader.data.handler.home;
 import android.util.Log;
 
 import com.dkotama.udayanaojsreader.common.Constant;
-import com.dkotama.udayanaojsreader.data.handler.common.BaseHandler;
 import com.dkotama.udayanaojsreader.data.handler.common.ScidirBaseHandler;
 import com.dkotama.udayanaojsreader.data.scidir.SearchResultModel;
 import com.dkotama.udayanaojsreader.presenter.home.HomeContract;
-
-import java.io.IOException;
 
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.HttpUrl;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import retrofit2.Call;
 
 /**
  * Created by dkotama on 18/09/18.
@@ -65,6 +56,7 @@ public class HomeHandler extends ScidirBaseHandler {
                         @Override
                         public void onError(Throwable e) {
                             Log.e(TAG, "onError: ", e.getCause());
+                            presenter.loadHomeFailed(e.getLocalizedMessage());
                         }
                     });
         } catch (Exception e) {

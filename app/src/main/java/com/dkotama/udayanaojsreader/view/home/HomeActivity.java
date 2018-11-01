@@ -5,14 +5,11 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,24 +20,33 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dkotama.udayanaojsreader.R;
+import com.dkotama.udayanaojsreader.data.model.favorite.FavouriteData;
 import com.dkotama.udayanaojsreader.data.scidir.HomeEntryItemData;
 import com.dkotama.udayanaojsreader.data.scidir.SearchResultModel;
+import com.dkotama.udayanaojsreader.presenter.favourite.FavouriteContract;
+import com.dkotama.udayanaojsreader.presenter.favourite.FavouritePresenter;
 import com.dkotama.udayanaojsreader.presenter.home.HomeContract;
 import com.dkotama.udayanaojsreader.presenter.home.HomePresenter;
+import com.dkotama.udayanaojsreader.presenter.home.UpdatedHomeItem;
 import com.dkotama.udayanaojsreader.view.common.BaseActivity;
 import com.dkotama.udayanaojsreader.view.login.LoginActivity;
 import com.dkotama.udayanaojsreader.view.paper.PaperActivity;
 
-public class HomeActivity extends BaseActivity implements HomeContract.View {
+import java.util.ArrayList;
+import java.util.List;
+
+public class HomeActivity extends BaseActivity implements HomeContract.View, FavouriteContract.View {
 
     HomeContract.Presenter presenter;
+    FavouriteContract.Presenter favPresenter;
     String TAG = "HomeActivity";
 
     RecyclerView recyclerView;
     ProgressBar progressBar;
     HomeVerticalAdapter adapter = new HomeVerticalAdapter();
-    TextView totalJournalTV;
+    TextView totalJournalTV, emptyFillTV;
     String searchQuery = "";
+    List<UpdatedHomeItem> updatedHomeItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +58,14 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
         recyclerView = findViewById(R.id.recycler_view);
         progressBar = findViewById(R.id.progressbar);
         totalJournalTV = findViewById(R.id.total_journal_tv);
+        emptyFillTV   = findViewById(R.id.empty_fill);
 
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.addItemDecoration(new DividerItemDecoration(this.getBaseContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(layoutManager);
 
+        favPresenter = new FavouritePresenter(this);
         presenter = new HomePresenter(this);
         progressBar.setVisibility(View.INVISIBLE);
     }
@@ -66,6 +74,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
     protected void onNewIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             searchQuery = intent.getStringExtra(SearchManager.QUERY);
+            emptyFillTV.setVisibility(View.INVISIBLE);
             totalJournalTV.setText("Searching...");
 
             if (adapter.getItemCount() > 0) {
@@ -112,6 +121,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
 
     @Override
     public void onLoadHomeSuccess(SearchResultModel model) {
+
         adapter = new HomeVerticalAdapter(model.getResults().getEntries(), this);
         recyclerView.setAdapter(adapter);
 
@@ -141,6 +151,19 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
         startActivity(intent);
     }
 
+    @Override
+    public void onClickAddFavorite(HomeEntryItemData item, int position) {
+        UpdatedHomeItem newItem = new UpdatedHomeItem(item.getDoi(), position);
+        updatedHomeItems.add(newItem);
+        favPresenter.addFavorite(item);
+    }
+
+
+    @Override
+    public void onClickRemoveFavorite(int favID) {
+        favPresenter.removeFavorite(favID);
+    }
+
     private void askLogout() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setCancelable(true);
@@ -157,49 +180,68 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
         dialog.create().show();
     }
 
-    /**
-     * RecyclerView item decoration - give equal margin around grid item
-     */
-    public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
+    @Override
+    public void onLoadFavouriteSuccess() {
 
-        private int spanCount;
-        private int spacing;
-        private boolean includeEdge;
-
-        public GridSpacingItemDecoration(int spanCount, int spacing, boolean includeEdge) {
-            this.spanCount = spanCount;
-            this.spacing = spacing;
-            this.includeEdge = includeEdge;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            int position = parent.getChildAdapterPosition(view); // item position
-            int column = position % spanCount; // item column
-
-            if (includeEdge) {
-                outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
-                outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
-
-                if (position < spanCount) { // top edge
-                    outRect.top = spacing;
-                }
-                outRect.bottom = spacing; // item bottom
-            } else {
-                outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
-                outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
-                if (position >= spanCount) {
-                    outRect.top = spacing; // item top
-                }
-            }
-        }
     }
 
-    /**
-     * Converting dp to pixel
-     */
-    private int dpToPx(int dp) {
-        Resources r = getResources();
-        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
+    @Override
+    public void onLoadFavouriteFailed(String message) {
+
+    }
+
+    @Override
+    public void onAddFavouriteSuccess(FavouriteData data) {
+        Log.d(TAG, "onAddFavouriteSuccess: " + data.getDoi());
+
+        int count = 0;
+
+        for (HomeEntryItemData item: adapter.items) {
+            if (item.getDoi().equals(data.getDoi())) {
+                Log.d(TAG, "SAME DOI FOUND: ");
+
+                item.setFavorited(true);
+                item.setId(data.getId());
+
+                adapter.notifyItemChanged(count, HomeVerticalAdapter.PAYLOAD_UPDATED_ITEM);
+                break;
+            }
+
+            count++;
+        }
+
+        Toast.makeText(this, "Add Favorite Success", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onAddFavouriteFailed(String message) {
+        makeError(message, "Error Add Favorite");
+    }
+
+    @Override
+    public void onRemoveFavoriteSuccess(FavouriteData data) {
+        Log.d(TAG, "onRemoveFavoriteSuccess: " + data.getDoi());
+
+        int count = 0;
+
+        for (HomeEntryItemData item: adapter.items) {
+            if (item.getId() == data.getId()){
+
+                item.setFavorited(false);
+                item.setId(0);
+
+                adapter.notifyItemChanged(count, HomeVerticalAdapter.PAYLOAD_UPDATED_ITEM);
+                break;
+            }
+
+            count++;
+        }
+
+        Toast.makeText(this, "Remove Favorite Success", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRemoveFavoriteFailed(String message) {
+        makeError(message, "Error Remove Favorite");
     }
 }

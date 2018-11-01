@@ -3,7 +3,6 @@ package com.dkotama.udayanaojsreader.data.scidir;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**

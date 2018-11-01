@@ -5,9 +5,8 @@
     android:layout_height="match_parent"
     tools:context="com.dkotama.udayanaojsreader.view.paper.PaperActivity">
 
-    <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/pdf_viewer"
+    <WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="match_parent"></WebView>
 </LinearLayout>

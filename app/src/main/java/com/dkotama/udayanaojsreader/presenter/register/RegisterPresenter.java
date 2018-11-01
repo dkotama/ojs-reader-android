@@ -1,12 +1,7 @@
 package com.dkotama.udayanaojsreader.presenter.register;
 
-import android.util.Log;
-
-import com.dkotama.udayanaojsreader.data.handler.login.LoginHandler;
 import com.dkotama.udayanaojsreader.data.handler.register.RegisterHandler;
-import com.dkotama.udayanaojsreader.data.model.login.LoginData;
 import com.dkotama.udayanaojsreader.data.model.register.RegisterData;
-import com.dkotama.udayanaojsreader.presenter.login.LoginContract;
 
 /**
  * Created by dkotama on 16/09/18.
