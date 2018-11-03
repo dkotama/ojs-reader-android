@@ -18,10 +18,6 @@ public interface HomeContract {
         void onLoadHomeSuccess(SearchResultModel model);
         void onLoadHomeFailed(String message);
         void onLogoutSuccess();
-
-        void onClickJournalItem(HomeEntryItemData item);
-        void onClickAddFavorite(HomeEntryItemData item, int position);
-        void onClickRemoveFavorite(int favID);
     }
 
     interface Presenter {

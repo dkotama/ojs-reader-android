@@ -7,6 +7,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dkotama.udayanaojsreader.R;
+import com.dkotama.udayanaojsreader.data.model.favorite.FavouriteRealmData;
+import com.dkotama.udayanaojsreader.data.scidir.HomeEntryItemData;
 
 /**
  * Created by dkotama on 01/11/18.
@@ -47,5 +49,15 @@ public class ArticleViewHolder extends RecyclerView.ViewHolder {
         progressBar.setVisibility(View.VISIBLE);
         fav.setVisibility(View.GONE);
         notfav.setVisibility(View.GONE);
+    }
+
+    public interface ArticleViewHolderClickListener {
+        void onClickJournalItem(HomeEntryItemData item);
+        void onClickAddFavorite(HomeEntryItemData item, int position);
+
+        void onClickJournalItem(FavouriteRealmData item);
+
+        void onClickRemoveFavorite(int favID);
+
     }
 }

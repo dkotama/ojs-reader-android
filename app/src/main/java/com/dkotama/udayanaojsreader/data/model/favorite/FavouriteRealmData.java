@@ -1,5 +1,7 @@
 package com.dkotama.udayanaojsreader.data.model.favorite;
 
+import com.dkotama.udayanaojsreader.common.Constant;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -62,5 +64,10 @@ public class FavouriteRealmData extends RealmObject {
 
     public String getTeaser() {
         return teaser;
+    }
+
+    public String getPdfUrl() {
+        return  "http://api.elsevier.com/content/article/doi/" + this.getDoi() +
+                "?httpAccept=application%2Fpdf&apiKey=" + Constant.API_STRING;
     }
 }

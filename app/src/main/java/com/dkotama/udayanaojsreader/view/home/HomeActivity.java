@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.dkotama.udayanaojsreader.R;
 import com.dkotama.udayanaojsreader.data.model.favorite.FavouriteData;
+import com.dkotama.udayanaojsreader.data.model.favorite.FavouriteRealmData;
 import com.dkotama.udayanaojsreader.data.scidir.HomeEntryItemData;
 import com.dkotama.udayanaojsreader.data.scidir.SearchResultModel;
 import com.dkotama.udayanaojsreader.presenter.favourite.FavouriteContract;
@@ -28,14 +29,16 @@ import com.dkotama.udayanaojsreader.presenter.favourite.FavouritePresenter;
 import com.dkotama.udayanaojsreader.presenter.home.HomeContract;
 import com.dkotama.udayanaojsreader.presenter.home.HomePresenter;
 import com.dkotama.udayanaojsreader.presenter.home.UpdatedHomeItem;
+import com.dkotama.udayanaojsreader.view.common.ArticleViewHolder;
 import com.dkotama.udayanaojsreader.view.common.BaseActivity;
+import com.dkotama.udayanaojsreader.view.favourite.FavouriteListActivity;
 import com.dkotama.udayanaojsreader.view.login.LoginActivity;
 import com.dkotama.udayanaojsreader.view.paper.PaperActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends BaseActivity implements HomeContract.View, FavouriteContract.View {
+public class HomeActivity extends BaseActivity implements HomeContract.View, FavouriteContract.View, ArticleViewHolder.ArticleViewHolderClickListener{
 
     HomeContract.Presenter presenter;
     FavouriteContract.Presenter favPresenter;
@@ -109,7 +112,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Fav
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.favorite_btn :
-                makeError("Fav Selected", "selected").show();
+                Intent intent = new Intent(getBaseContext(), FavouriteListActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.logout_btn:
                 askLogout();
@@ -156,6 +160,13 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Fav
         UpdatedHomeItem newItem = new UpdatedHomeItem(item.getDoi(), position);
         updatedHomeItems.add(newItem);
         favPresenter.addFavorite(item);
+    }
+
+    @Override
+    public void onClickJournalItem(FavouriteRealmData item) {
+        Intent intent = new Intent(getBaseContext(), PaperActivity.class);
+        intent.putExtra("pdfUrl", item.getPdfUrl());
+        startActivity(intent);
     }
 
 

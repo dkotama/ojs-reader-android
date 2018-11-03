@@ -29,14 +29,13 @@ import io.realm.Realm;
 public class HomeVerticalAdapter extends RecyclerView.Adapter<ArticleViewHolder> {
     public static int PAYLOAD_UPDATED_ITEM = 0;
 
-    private HomeContract.View view;
+    private ArticleViewHolder.ArticleViewHolderClickListener listener;
     public List<HomeEntryItemData> items = new ArrayList<>();
     private String TAG ="IssueAdapter";
 
-    public HomeVerticalAdapter(List<HomeEntryItemData> items, HomeContract.View view) {
+    public HomeVerticalAdapter(List<HomeEntryItemData> items, ArticleViewHolder.ArticleViewHolderClickListener listener) {
         this.items = items;
-        this.view = view;
-
+        this.listener = listener;
     }
 
     public HomeVerticalAdapter() {
@@ -84,17 +83,18 @@ public class HomeVerticalAdapter extends RecyclerView.Adapter<ArticleViewHolder>
         holder.isFavorited = isFav;
         holder.updateFav();
 
+
         holder.pdfBtnImgView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                view.onClickJournalItem(item);
+                listener.onClickJournalItem(item);
             }
         });
 
         holder.notfav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                view.onClickAddFavorite(item, position);
+                listener.onClickAddFavorite(item, position);
                 holder.showFavLoading();
             }
         });
@@ -104,7 +104,7 @@ public class HomeVerticalAdapter extends RecyclerView.Adapter<ArticleViewHolder>
             @Override
             public void onClick(View v) {
                 if (item.getId() != 0) {
-                    view.onClickRemoveFavorite(item.getId());
+                    listener.onClickRemoveFavorite(item.getId());
                     holder.showFavLoading();
                 }
             }
