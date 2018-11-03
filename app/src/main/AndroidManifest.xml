@@ -47,8 +47,10 @@
             android:name=".view.issue.AllIssueActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".view.paper.PaperActivity" />
-        <activity android:name=".view.LoadingActivity"
+        <activity
+            android:name=".view.LoadingActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".view.favourite.FavouriteListActivity"></activity>
     </application>
 
 </manifest>

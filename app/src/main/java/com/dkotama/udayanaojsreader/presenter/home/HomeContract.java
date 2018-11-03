@@ -37,7 +37,6 @@ public interface HomeContract {
                 @Query("apiKey") String apikey,
                 @Query("query") String query,
                 @Query("httpAccept") String acceptType,
-//                @Query("facets") String facet,
                 @Query("start") String startPage,
                 @Query("count") String count
         );
