@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -90,6 +91,10 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Fav
         } else {
             Toast.makeText(this, "NULL", Toast.LENGTH_SHORT).show();
         }
+
+        if (Intent.ACTION_DELETE.equals(intent.getAction())) {
+            Toast.makeText(this, "Clear", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -104,6 +109,35 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Fav
         // Assumes current activity is the searchable activity
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setIconifiedByDefault(true); // Do not iconify the widget; expand it by default
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (newText.equals("")) {
+                    adapter.resetData();
+                    adapter.notifyDataSetChanged();
+
+                    totalJournalTV.setText("");
+                }
+                return false;
+            }
+        });
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                adapter.resetData();
+                adapter.notifyDataSetChanged();
+
+                totalJournalTV.setText("");
+                return false;
+            }
+        });
 
         return true;
     }

@@ -31,6 +31,7 @@ public class LoadingActivity extends BaseActivity implements FavouriteContract.V
     public void onLoadFavouriteSuccess() {
         Intent intent =  new Intent(getBaseContext(), HomeActivity.class);
         startActivity(intent);
+        finishAffinity();
     }
 
     @Override
